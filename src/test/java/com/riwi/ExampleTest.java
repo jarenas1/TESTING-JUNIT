@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExampleTest {
@@ -55,7 +56,7 @@ public class ExampleTest {
     @Test
     public void testCountALetters(){
         Example example = new Example();
-        String cadena = "ju renas";
+        String cadena = "juanarenas";
 
         int result = example.contarLetrasA(cadena);
 
@@ -119,5 +120,30 @@ public class ExampleTest {
     public void testMessageRetrsased() throws InterruptedException {
         String result = example.mensajeConRetraso();
         assertEquals("Listo después de retraso", result);
+    }
+
+    @Test
+    public void testTransofrmToString(){
+        List<Integer> numbers = List.of(1,2,3,4);
+
+        List<String> result = example.convertirAString(numbers);
+
+        assertEquals(List.of("1","2","3","4"), result);
+    }
+
+    @Test
+    public void testCalculateMedida(){
+        List<Integer> numbers = List.of(1,2,3);
+
+        Double media = example.calcularMedia(numbers);
+
+        assertEquals(2, media);
+    }
+
+    @Test
+    public void testCalculateMedidaError(){
+        List<Integer> numbers = new ArrayList<>();
+
+        assertThrows(IllegalArgumentException.class, () -> example.calcularMedia(numbers));
     }
 }
